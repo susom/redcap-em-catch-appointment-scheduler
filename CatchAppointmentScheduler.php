@@ -696,7 +696,7 @@ class CatchAppointmentScheduler extends \ExternalModules\AbstractExternalModule
             $this->sendEmail($user['instructor'] . '@stanford.edu',
                 ($instance['sender_email'] != '' ? $instance['sender_email'] : DEFAULT_EMAIL),
                 ($instance['sender_name'] != '' ? $instance['sender_name'] : DEFAULT_NAME),
-                '--APPT CONFIRMATION-- ' . $user['email'] . ' scheduled an appointment at ' . date('m/d/Y',
+                'CATCH Appointment: ' . $user['email'] . ' scheduled an appointment at ' . date('m/d/Y',
                     strtotime($this->calendarParams['calendarDate'])) . ' from ' . date('h:i A',
                     strtotime($this->calendarParams['calendarStartTime'])) . ' to ' . date('h:i A',
                     strtotime($this->calendarParams['calendarEndTime'])),
@@ -709,7 +709,7 @@ class CatchAppointmentScheduler extends \ExternalModules\AbstractExternalModule
                 'from' => '+' . $this->getProjectSetting('phone_number_country_code',
                         $this->getProjectId()) . $this->getProjectSetting('twilio_sender_number',
                         $this->getProjectId()),
-                'body' => "-- APPT CONFIRMATION --\nPlease arrive on " .
+                'body' => "CATCH Appointment: " .
                     date('m/d/Y', strtotime($this->calendarParams['calendarDate'])) .
                     ' at ' . date('h:i A', strtotime($this->calendarParams['calendarStartTime']))
                     //. ' to ' . date('h:i A', strtotime($this->calendarParams['calendarEndTime']))
