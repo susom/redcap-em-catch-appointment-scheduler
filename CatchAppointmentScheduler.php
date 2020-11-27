@@ -574,8 +574,7 @@ class CatchAppointmentScheduler extends \ExternalModules\AbstractExternalModule
                 $data = array();
                 $records = REDCap::getData($param);
                 foreach ($records as $record) {
-                    // add 3 hours lead time for first appointment.
-                    if (strtotime($record[$eventId][$variable]) > strtotime($start) + 10800 && strtotime($record[$eventId][$variable]) < strtotime($end) && $record[$eventId]['slot_status'] != CANCELED) {
+                    if (strtotime($record[$eventId][$variable]) > strtotime($start) && strtotime($record[$eventId][$variable]) < strtotime($end) && $record[$eventId]['slot_status'] != CANCELED) {
                         $data[] = $record;
                     }
                 }
@@ -1424,8 +1423,9 @@ class CatchAppointmentScheduler extends \ExternalModules\AbstractExternalModule
     {
         /**
          * skip past slots.
+         * give 3 hours lead before first appointment.
          */
-        if (time() > strtotime($slot['start' . $suffix])) {
+        if (time() + 10800 > strtotime($slot['start' . $suffix])) {
             return true;
         }
         return false;
