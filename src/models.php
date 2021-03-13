@@ -54,11 +54,12 @@ if (!isset($module)) {
                                value="<?php echo(isset($_GET[COMPLEMENTARY_NAME]) ? filter_var($_GET[COMPLEMENTARY_NAME],
                                    FILTER_SANITIZE_STRING) : '') ?>" required>
                     </div>
+
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" name="email" class="form-control" id="email"
                                value="<?php echo(isset($_GET[COMPLEMENTARY_EMAIL]) ? filter_var($_GET[COMPLEMENTARY_EMAIL],
-                                   FILTER_SANITIZE_STRING) : '') ?>" aria-describedby="emailHelp"
+                                   FILTER_SANITIZE_STRING) : $_GET['email']) ?>" aria-describedby="emailHelp"
                                placeholder="Enter email" required>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                             else.

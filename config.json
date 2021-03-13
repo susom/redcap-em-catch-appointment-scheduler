@@ -32,7 +32,8 @@
     "src/reschedule",
     "src/participants_list",
     "src/list",
-    "src/types"
+    "src/types",
+    "src/public_scheduler.php"
   ],
   "links": {
     "project": [
@@ -47,7 +48,14 @@
         "icon": "brick",
         "url": "src/manager.php",
         "show-header-and-footer": false
+      },
+      {
+        "name": "Public Calendar Page",
+        "icon": "brick",
+        "url": "src/public_scheduler.php",
+        "show-header-and-footer": false
       }
+
     ]
   },
   "system-settings": [
