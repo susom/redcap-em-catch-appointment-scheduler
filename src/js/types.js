@@ -331,9 +331,8 @@ jQuery(document).on('click', '#submit-booking-form', function (e) {
             if (response.status == 'ok') {
                 // alert(response.message);
                 // TODO: Close window
-                alert (response.status + "\n\n" + "Please close this window / tab.  Do not book more than one appointment.");
+                alert (response.message + "\n" + "Press OK to close this tab.  Please do not book more than one appointment per participant.");
                 window.close();
-
 
                 $('#booking').modal('hide');
                 record = {};
