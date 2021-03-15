@@ -329,7 +329,12 @@ jQuery(document).on('click', '#submit-booking-form', function (e) {
         success: function (response) {
             response = JSON.parse(response);
             if (response.status == 'ok') {
-                alert(response.message);
+                // alert(response.message);
+                // TODO: Close window
+                alert (response.status + "\n\n" + "Please close this window / tab.  Do not book more than one appointment.");
+                window.close();
+
+
                 $('#booking').modal('hide');
                 record = {};
                 if (currentView != '') {
