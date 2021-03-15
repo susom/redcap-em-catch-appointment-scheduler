@@ -89,8 +89,12 @@ jQuery(document).on('click', '#submit-reschedule-form', function (e) {
         success: function (response) {
             var response = JSON.parse(response);
             if (response.status == 'ok') {
-                alert(response.message);
+                // alert(response.message);
                 $('#booking').modal('hide');
+
+                // TODO: Close window
+                alert (response.status + "\n\n" + "Please close this window / tab.  Do not book more than one appointment.");
+                window.close();
             } else {
                 alert(response.message);
             }
