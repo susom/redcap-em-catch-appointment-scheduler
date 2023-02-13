@@ -47,12 +47,16 @@ class ComposerStaticInit855be90368b79cf36866337319a61b85
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Kigkonsult\\Icalcreator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src',
-            1 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util',
-            2 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits',
-        ),
+        'Kigkonsult\\Icalcreator\\' =>
+            array(
+                0 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src',
+                1 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util',
+                2 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits',
+            ),
+    );
+
+    public static $classMap = array(
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -60,6 +64,7 @@ class ComposerStaticInit855be90368b79cf36866337319a61b85
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit855be90368b79cf36866337319a61b85::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit855be90368b79cf36866337319a61b85::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit855be90368b79cf36866337319a61b85::$classMap;
 
         }, null, ClassLoader::class);
     }
