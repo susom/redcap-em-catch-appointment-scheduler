@@ -42,7 +42,7 @@ try {
 
 
         $data['participant_status' . $module->getSuffix()] = RESERVED;
-        if (!isset($_POST['employee_id'])) {
+        if (!isset($_POST['employee_id']) and defined('USERID') and USERID != '') {
             $data['employee_id' . $module->getSuffix()] = USERID;
         } else {
             $data['employee_id' . $module->getSuffix()] = filter_var($_POST['employee_id'], FILTER_SANITIZE_STRING);
@@ -78,9 +78,11 @@ try {
          */
         $labels = \REDCap::getValidFieldsByEvents($module->getProjectId(), array($reservationEventId));
         $completed = preg_grep('/_complete$/', $labels);
-        $second = array_slice($completed, 1, 1);  // array("status" => 1)
+        if (count($completed) > 1) {
+            $second = array_slice($completed, 1, 1);  // array("status" => 1)
+            $data[$second] = REDCAP_COMPLETE;
+        }
 
-        $data[$second] = REDCAP_COMPLETE;
 
         // the location is defined in the slot.
         $data['participant_location' . $module->getSuffix()] = $slot['location'];
