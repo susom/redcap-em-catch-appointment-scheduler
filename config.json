@@ -325,7 +325,7 @@
           "key": "calendar_body",
           "name": "<b>Calendar Email Body</b>",
           "required": false,
-          "type": "textarea"
+          "type": "rich-text"
         }
       ]
     },

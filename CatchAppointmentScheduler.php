@@ -683,15 +683,12 @@ class CatchAppointmentScheduler extends \ExternalModules\AbstractExternalModule
                 strtotime($this->calendarParams['calendarDate'])) . ' between ' . date('h:i A',
                 strtotime($this->calendarParams['calendarStartTime'])) . ' and ' . date('h:i A',
                 strtotime($this->calendarParams['calendarEndTime']));
-        $timeDetail = 'Please arrive' .
-            ' on ' . date('m/d/Y', strtotime($this->calendarParams['calendarDate'])) .
-            ' between ' . date('h:i A', strtotime($this->calendarParams['calendarStartTime'])) .
-            ' and ' . date('h:i A', strtotime($this->calendarParams['calendarEndTime']));
+
         $this->sendEmail($user['email'],
             ($instance['sender_email'] != '' ? $instance['sender_email'] : DEFAULT_EMAIL),
             ($instance['sender_name'] != '' ? $instance['sender_name'] : DEFAULT_NAME),
-            'SnapDx Appt Confirmation - ' . $timeDetail,
-            $timeDetail . "<br>" . $instance['calendar_body'],
+            $instance['calendar_subject'],
+            $instance['calendar_body'],
             true
         );
 
